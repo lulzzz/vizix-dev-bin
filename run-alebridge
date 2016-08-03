@@ -1,0 +1,23 @@
+#!/bin/bash
+echo
+echo "### stopping/removing services"
+echo
+docker stop alebridge
+docker rm -f alebridge
+
+echo
+echo "### running services"
+echo
+docker run -d --name alebridge -h alebridge \
+-p 9090:9090 \
+--link mongo \
+--link mysql \
+--link mosquitto \
+--link hazelcast1 \
+--link hazelcast2 \
+--link services \
+--link services:backend \
+-e VIZIX_BRIDGE_TYPE=alebridgemt \
+-e VIZIX_ALEB_CODE=ALEBDerby0 \
+-e VIZIX_HAZELCAST_NATIVE_CLIENT_ADDRESS=hazelcast2 \
+vizix-bridges

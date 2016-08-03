@@ -1,0 +1,12 @@
+#!/bin/bash
+echo
+echo "### building code"
+echo
+npm install
+bower prune
+bower install
+
+echo
+echo "### building docker"
+echo
+docker build -t vizix-ui .

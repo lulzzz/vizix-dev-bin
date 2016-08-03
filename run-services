@@ -1,0 +1,24 @@
+#!/bin/bash
+echo
+echo "### stopping/removing services"
+echo
+docker stop services
+docker rm -f services
+
+echo
+echo "### running services"
+echo
+docker run -d --name services -h services \
+--link mongo \
+--link mysql \
+--link mosquitto \
+--link hazelcast1 \
+--link hazelcast2 \
+-p 8080:8080 \
+-e VIZIX_MONGO_HOST=mongo \
+-e VIZIX_MQTT_HOST=mosquitto \
+-e VIZIX_MYSQL_HOST=mysql \
+-e VIZIX_MYSQL_PASSWORD=control123! \
+-e VIZIX_HAZELCAST_DISTRIBUTED_ENABLE=true \
+-e VIZIX_HAZELCAST_NATIVE_CLIENT_ADDRESS=hazelcast1 \
+vizix-services
