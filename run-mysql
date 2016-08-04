@@ -1,0 +1,20 @@
+#!/bin/bash
+echo
+echo "### building code"
+echo
+
+docker run -d --name mysql -h mysql \
+-p 3306:3306 \
+-e MYSQL_DATABASE=riot_main \
+-e MYSQL_ROOT_PASSWORD=control123! \
+-v /home/rhuanca/docker-volumes/mysql-data:/var/lib/mysql \
+mysql/mysql-server:5.7 \
+--max_allowed_packet=1024M \
+--max_connections=1500 \
+--query_cache_size=0 \
+--interactive_timeout=900 \
+--wait_timeout=900 \
+--lower_case_table_names=1 \
+--net_write_timeout=3600 \
+--net_read_timeout=3600 \
+--connect_timeout=900 
