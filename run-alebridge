@@ -1,12 +1,12 @@
 #!/bin/bash
 echo
-echo "### stopping/removing services"
+echo "### stopping/removing alebridge"
 echo
 docker stop alebridge
 docker rm -f alebridge
 
 echo
-echo "### running services"
+echo "### running alebridge"
 echo
 docker run -d --name alebridge -h alebridge \
 -p 9090:9090 \
