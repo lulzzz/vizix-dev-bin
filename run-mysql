@@ -1,7 +1,13 @@
 #!/bin/bash
 echo
-echo "### building code"
+echo "### running mysql"
 echo
+
+echo "stop docker mysql"
+docker stop mysql
+
+echo "docker rm mysql"
+docker rm -f mysql
 
 docker run -d --name mysql -h mysql \
 -p 3306:3306 \
@@ -17,4 +23,4 @@ mysql/mysql-server:5.7 \
 --lower_case_table_names=1 \
 --net_write_timeout=3600 \
 --net_read_timeout=3600 \
---connect_timeout=900 
+--connect_timeout=900
