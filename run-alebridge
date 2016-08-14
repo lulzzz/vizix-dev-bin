@@ -18,6 +18,6 @@ docker run -d --name alebridge -h alebridge \
 --link services \
 --link services:backend \
 -e VIZIX_BRIDGE_TYPE=alebridgemt \
--e VIZIX_ALEB_CODE=ALEBDerby0 \
+-e VIZIX_ALEB_CODE=ALEB \
 -e VIZIX_HAZELCAST_NATIVE_CLIENT_ADDRESS=hazelcast2 \
 vizix-bridges
