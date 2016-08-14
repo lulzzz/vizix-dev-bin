@@ -10,31 +10,15 @@ docker rm -f hazelcast2
 echo
 echo "### running hazelcast nodes"
 echo
-docker run -d --name services -h services \
---link mongo \
---link mysql \
---link mosquitto \
---link hazelcast1 \
---link hazelcast2 \
--p 8080:8080 \
--e VIZIX_MONGO_HOST=mongo \
--e VIZIX_MQTT_HOST=mosquitto \
--e VIZIX_MYSQL_HOST=mysql \
--e VIZIX_MYSQL_PASSWORD=control123! \
--e VIZIX_HAZELCAST_DISTRIBUTED_ENABLE=true \
--e VIZIX_HAZELCAST_NATIVE_CLIENT_ADDRESS=hazelcast1 \
-vizix-services
-
-
 docker run -d --name hazelcast1 -h hazelcast1 \
--p 5701:5701
+-p 5701:5701 \
 -e VIZIX_HAZELCAST_MEMBER_LIST=hazelcast1,hazelcast2 \
 -e VIZIX_HAZELCAST_PUBLIC_ADDRESS=hazelcast1 \
 containers.vizixcloud.com/hazelcast
 
-docker run -d --name hazelcast2 -h hazelcast2
---link hazelcast1
--p 5702:5701
--e VIZIX_HAZELCAST_MEMBER_LIST=hazelcast1,hazelcast2
--e VIZIX_HAZELCAST_PUBLIC_ADDRESS=hazelcast2
+docker run -d --name hazelcast2 -h hazelcast2 \
+--link hazelcast1 \
+-p 5702:5701 \
+-e VIZIX_HAZELCAST_MEMBER_LIST=hazelcast1,hazelcast2 \
+-e VIZIX_HAZELCAST_PUBLIC_ADDRESS=hazelcast2 \
 containers.vizixcloud.com/hazelcast
