@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker stop mysql
+docker stop mongo
+docker stop mosquitto
+docker stop hazelcast1
+docker stop hazelcast2

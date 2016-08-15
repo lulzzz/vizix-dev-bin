@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker start mysql
+docker start mongo
+docker start mosquitto
+docker start hazelcast1
+docker start hazelcast2
