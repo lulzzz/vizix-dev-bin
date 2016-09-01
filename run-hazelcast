@@ -11,14 +11,15 @@ echo
 echo "### running hazelcast nodes"
 echo
 docker run -d --name hazelcast1 -h hazelcast1 \
+--network vizix-network \
 -p 5701:5701 \
 -e VIZIX_HAZELCAST_MEMBER_LIST=hazelcast1,hazelcast2 \
 -e VIZIX_HAZELCAST_PUBLIC_ADDRESS=hazelcast1 \
-containers.vizixcloud.com/hazelcast
+mojix/hazelcast
 
 docker run -d --name hazelcast2 -h hazelcast2 \
---link hazelcast1 \
+--network vizix-network \
 -p 5702:5701 \
 -e VIZIX_HAZELCAST_MEMBER_LIST=hazelcast1,hazelcast2 \
 -e VIZIX_HAZELCAST_PUBLIC_ADDRESS=hazelcast2 \
-containers.vizixcloud.com/hazelcast
+mojix/hazelcast
