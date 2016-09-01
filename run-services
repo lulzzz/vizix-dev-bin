@@ -8,7 +8,7 @@ docker rm -f services
 echo
 echo "### running services"
 echo
-docker run -d --name services -h services \
+docker run -d --name backend -h backend \
 --network vizix-network \
 -p 8080:8080 \
 -e VIZIX_MONGO_HOST=mongo \
