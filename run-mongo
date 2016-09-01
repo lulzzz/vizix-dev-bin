@@ -1,0 +1,16 @@
+#!/bin/bash
+echo
+echo "### stopping/removing mongo"
+echo
+docker stop mongo
+docker rm -f mongo
+
+echo
+echo "### running mongo"
+echo
+docker run -d --name mongo -h mongo \
+--network vizix-network \
+-p 27017:27017 \
+-v /home/rhuanca/docker-volumes/mongo-data:/data/db \
+mongo:3.2 \
+--storageEngine wiredTiger --journal --slowms=1
