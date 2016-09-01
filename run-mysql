@@ -10,6 +10,7 @@ echo "docker rm mysql"
 docker rm -f mysql
 
 docker run -d --name mysql -h mysql \
+--network vizix-network \
 -p 3306:3306 \
 -e MYSQL_DATABASE=riot_main \
 -e MYSQL_ROOT_PASSWORD=control123! \
