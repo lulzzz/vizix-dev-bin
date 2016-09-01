@@ -1,0 +1,15 @@
+#!/bin/bash
+echo
+echo "### stopping/removing mosquitto"
+echo
+docker stop mosquitto
+docker rm -f mosquitto
+
+echo
+echo "### running mosquitto"
+echo
+
+docker run -d --name mosquitto -h mosquitto \
+--network vizix-network \
+-p 1883:1883 \
+mojix/mosquitto
