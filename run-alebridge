@@ -14,4 +14,5 @@ docker run -d --name alebridge -h alebridge \
 -e VIZIX_BRIDGE_TYPE=alebridgemt \
 -e VIZIX_ALEB_CODE=ALEB \
 -e VIZIX_HAZELCAST_NATIVE_CLIENT_ADDRESS=hazelcast2 \
+-e VIZIX_API_KEY=7B4BCCDC \
 vizix-bridges

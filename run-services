@@ -2,8 +2,8 @@
 echo
 echo "### stopping/removing services"
 echo
-docker stop services
-docker rm -f services
+docker stop backend
+docker rm -f backend
 
 echo
 echo "### running services"
