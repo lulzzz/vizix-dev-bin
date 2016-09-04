@@ -2,8 +2,8 @@
 
 NETWORK=vizix-network
 
-## delete network if exists
-if ! [[ -z "`docker network ls | grep "$NETWORK"`" ]]; then
+# delete network if exists
+if ! [[ -z `docker network ls | grep $NETWORK` ]]; then
   docker network rm $NETWORK
 fi
 
