@@ -1,7 +1,11 @@
 #!/bin/bash
 
-## remove network. Ignore when not exists
-docker network rm vizix-network 2> /dev/null
+NETWORK=vizix-network
+
+## delete network if exists
+if ! [[ -z "`docker network ls | grep "$NETWORK"`" ]]; then
+  docker network rm $NETWORK
+fi
 
 # create network
-docker network create -d bridge vizix-network
+docker network create -d bridge $NETWORK
