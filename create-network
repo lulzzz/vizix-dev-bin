@@ -1,2 +1,2 @@
-docker network rm vizix-network
+docker network rm vizix-network 2> /dev/null
 docker network create -d bridge vizix-network
