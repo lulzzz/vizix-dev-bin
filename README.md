@@ -42,22 +42,15 @@
 
 ## DAILY USAGE
 
-1. start basic services (resolvable, mysql, mongo, mosquitto, hazelcast(s))
+For every day's work use build-, run- and docker start/stop as needed.
+For example this could be a sequence:
 
-    ```sh
-    $ start-basic-services
-    ```
-
-2. start services/backend
-
-    ```sh
-    $ docker start services
-    ```
-
-3. start ui
-
-    ```sh
-    $ docker start ui
-    ```
-
-For every day's work use build, run and docker start/stop as needed.
+```sh
+$ #start basic services
+$ #resolvable, mysql, mongo, mosquitto, hazelcast(s)
+$ start-basic-services
+$ #start services/backend
+$ docker start services
+$ #start ui
+$ docker start ui
+```
