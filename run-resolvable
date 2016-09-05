@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "delete resolvable"
+docker stop resolvable
+docker rm -f resolvable
+
+echo "run resolvable"
+docker run -d \
+    --hostname resolvable \
+    --name resolvable \
+    --network vizix-network \
+    -v /var/run/docker.sock:/tmp/docker.sock \
+    -v /etc/resolv.conf:/tmp/resolv.conf \
+    mgood/resolvable
