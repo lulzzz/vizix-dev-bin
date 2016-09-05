@@ -7,11 +7,11 @@
     $ create-network
     ```
 
-3. create folders:
+3. create data folders:
 
     ```sh
     $ mkdir ~/docker-volumes/mysql-data
-    $ mkdir ~/docker-volumes/mysql-data
+    $ mkdir ~/docker-volumes/mongo-data
     ```
 
 4. create basic services
